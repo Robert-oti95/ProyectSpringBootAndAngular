@@ -1,0 +1,92 @@
+<!--   INI-5
+<div class="container vh-100">
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="col-md-4 margin-top:10vh">
+      <form class="p-4 border rounded bg-light">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email:</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            placeholder="Agrega un email">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Colocar tu passwors">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1"
+            placeholder="Colocar nuevamente tu password">
+        </div>
+        <div class="col text-center">
+          <button type="submit" class="btn btn-primary ">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+-->
+<div class="bg" style="background-color: #f8f8f8;">
+  <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working..">
+      <div class="parent">
+        <div class="child">
+          <div nz-row class="imgDiv">
+            <div nz-col nzSpan="24">
+              <h1 style="margin-left: 80px;">Signup Up</h1>
+            </div>
+          </div>
+          <form nz-form [formGroup]="signupForm">
+
+            <nz-form-item>
+              <nz-form-control nzHasFeedback nzErrorTip="The input isn't valid E.mail">
+                <input nz-input placeholder="Email" id="email" formControlName="email">
+              </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+              <nz-form-control nzHasFeedback [nzErrorTip]="errorPass">
+                <input nz-input placeholder="Password" type="password" id="password" formControlName="password">
+                <ng-template #errorPass let-control>
+                  <ng-container *ngIf="control.hasError('required')">
+                    Password Is Required !!!!
+                  </ng-container>
+                  <ng-container *ngIf="control.hasError('pattern')">
+                    Password Should Contains 8 characters, 1 Lowercase, 1 Uppercase, 1 Number and 1 Special Character !!!
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+              <nz-form-control nzHasFeedback [nzErrorTip]="errorTpl">
+                <input nz-input placeholder="Confirm Password" type="password" id="checkPassword" formControlName="checkPassword"/>
+                <ng-template #errorTpl let-control>
+                  <ng-container *ngIf="control.hasError('required')">
+                    Please confirm your password !!!!
+                  </ng-container>
+                  <ng-container *ngIf="control.hasError('confirm')">
+                    Two passwords that you enter is inconsistent  !!!
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+              <nz-form-control nzHasFeedback [nzErrorTip]="userErrorTpl">
+                <input nz-input placeholder="Name" id="username" formControlName="name"/>
+                <ng-template #userErrorTpl let-control>
+                  <ng-container *ngIf="control.hasError('required')">
+                    Please input your name !!!!
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+
+            <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" (click)="register()" [disabled]="signupForm.invalid">Register</button>
+            Or <a routerLink="/login"> login now !</a>
+          </form>
+        </div>
+      </div>
+  </nz-spin>
+</div>
+<!--FIN-5-->

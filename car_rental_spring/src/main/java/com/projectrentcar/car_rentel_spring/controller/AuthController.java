@@ -77,6 +77,6 @@ public class AuthController {
         }
         return authenticationResponse;
     }
-    //INI-8
+    //FIN-8
 }
 //FIN - 4
